@@ -11,7 +11,7 @@ metadata:
 spec: 
   project: default
   source: 
-    repoURL: https://github.com/xokacar/imup-middle
+    repoURL: https://github.com/xokacar/clean-devops
     path: ./cleanchart
     targetRevision: HEAD
     helm:
