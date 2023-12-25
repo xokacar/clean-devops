@@ -8,6 +8,8 @@ metadata:
     argocd-image-updater.argoproj.io/enhanced-devops.update-strategy: latest
     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd-image-updater/git-patko
     argocd-image-updater.argoproj.io/enhanced-devops.pull-secret: pullsecret:argocd/acr-secret
+    argocd-image-updater.argoproj.io/enhanced-devops.autopull: "true"
+    argocd-image-updater.argoproj.io/enhanced-devops.registry: "crmasraf001.azurecr.io/enhanced-devops:latest"
 spec: 
   project: default
   source: 
