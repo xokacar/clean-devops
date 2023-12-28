@@ -4,12 +4,11 @@ metadata:
   name: enhanced-devops-app
   namespace: argocd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: enhanced-devops=crmasraf001.azurecr.io/enhanced-devops:latest
-    argocd-image-updater.argoproj.io/enhanced-devops.update-strategy: latest
+    argocd-image-updater.argoproj.io/image-list: app=crmasraf001.azurecr.io/enhanced-devops
+    argocd-image-updater.argoproj.io/app.update-strategy: latest
     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd-image-updater/git-patko
-    argocd-image-updater.argoproj.io/enhanced-devops.pull-secret: pullsecret:argocd/acr-secret
-    argocd-image-updater.argoproj.io/enhanced-devops.autopull: "true"
-    argocd-image-updater.argoproj.io/enhanced-devops.registry: "crmasraf001.azurecr.io/enhanced-devops:latest"
+    argocd-image-updater.argoproj.io/force-update: "true"
+    argocd-image-updater.argoproj.io/app.allow-tags: regexp:master-.*
 spec: 
   project: default
   source: 
@@ -18,7 +17,7 @@ spec:
     targetRevision: HEAD
     helm:
       valueFiles:
-        - values.yaml
+        - ./cleanchart/values.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: argocd
