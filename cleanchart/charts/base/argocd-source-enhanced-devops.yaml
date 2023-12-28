@@ -1,0 +1,8 @@
+helm:
+  parameters:
+  - name: image.name
+    value: crmasraf001.azurecr.io/enhanced-devops
+    forcestring: true
+  - name: image.tag
+    value: latest
+    forcestring: true
