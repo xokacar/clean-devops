@@ -7,7 +7,7 @@ config:
       api_url: https://crmasraf001.azurecr.io
       credentials: argocd/acr-secret
       default: yes
-      forceString: false
+      forceString: true 
   cm:
     accounts.image-updater: apiKey
 image:
