@@ -1,6 +1,6 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
-metadata: 
+metadata:
   name: enhanced-devops-app
   namespace: argocd
   annotations:
@@ -9,9 +9,9 @@ metadata:
     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd-image-updater/git-patko
     argocd-image-updater.argoproj.io/force-update: "true"
     argocd-image-updater.argoproj.io/app.allow-tags: regexp:master-.*
-spec: 
+spec:
   project: default
-  source: 
+  source:
     repoURL: https://github.com/xokacar/clean-devops
     path: ./cleanchart
     targetRevision: HEAD
@@ -19,15 +19,15 @@ spec:
       valueFiles:
         - ./cleanchart/values.yaml
   destination:
-    server: 'https://kubernetes.default.svc'
+    server: https://kubernetes.default.svc
     namespace: argocd
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-    - Replace=true
-    - Force=true
-    - Validate=false
-    - CreateNamespace=true
-    - PruneLast=true
+      - Replace=true
+      - Force=true
+      - Validate=false
+      - CreateNamespace=true
+      - PruneLast=true

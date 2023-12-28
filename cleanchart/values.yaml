@@ -1,46 +1,35 @@
+---
 replicaCount: 1
-
 config:
   registries:
-  - name: clean-devops
-    prefix: crmasraf001.azurecr.io
-    api_url: https://crmasraf001.azurecr.io
-    credentials: argocd/acr-secret
-    default: yes
-    forceString: false
+    - name: clean-devops
+      prefix: crmasraf001.azurecr.io
+      api_url: https://crmasraf001.azurecr.io
+      credentials: argocd/acr-secret
+      default: yes
+      forceString: false
   cm:
     accounts.image-updater: apiKey
-
-
 image:
   repository: crmasraf001.azurecr.io/enhanced-devops
   pullPolicy: Always
   tag: latest
-
-
-
 imagePullSecrets:
   - name: acr-secret
 nameOverride: ""
 fullnameOverride: ""
-
 serviceAccount:
   create: true
   automount: true
   annotations: {}
   name: clean-svcaccount
-
-
 podAnnotations: {}
 podLabels: {}
 podSecurityContext: {}
 securityContext: {}
-
 service:
   type: ClusterIP
   port: 3002
-
-
 ingress:
   enabled: false
   className: ""
@@ -52,8 +41,6 @@ ingress:
           pathType: ImplementationSpecific
   tls: []
 resources: {}
-
-
 autoscaling:
   enabled: false
   minReplicas: 1
